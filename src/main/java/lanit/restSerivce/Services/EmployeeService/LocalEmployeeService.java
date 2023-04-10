@@ -13,12 +13,12 @@ import java.util.UUID;
 public class LocalEmployeeService implements EmployeeServiceIf {
 
     private List<Employee> employeeList = new ArrayList<>();
-    @PostMapping("/employee/add")
+    @PostMapping("/employees")
     @Override
     public Employee addEmployee(String name, String surname, String role) {
-        if (name    == null)    throw new EmployeeMissingArgException("employee/add", "name",    1, "null");
-        if (surname == null)    throw new EmployeeMissingArgException("employee/add", "surname", 2, "null");
-        if (role    == null)    throw new EmployeeMissingArgException("employee/add", "role",    3, "null");
+        if (name    == null)    throw new EmployeeMissingArgException("String name",    "null");
+        if (surname == null)    throw new EmployeeMissingArgException("String surname", "null");
+        if (role    == null)    throw new EmployeeMissingArgException("String role",    "null");
 
         var emp = new Employee(name, surname);
         emp.setRole(role);
@@ -26,10 +26,14 @@ public class LocalEmployeeService implements EmployeeServiceIf {
         return emp;
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/employees/{id}")
     @Override
     public Employee getEmployeeFromId(@PathVariable String id) {
-        var uid = UUID.fromString(id);
+        UUID uid;
+
+        try {uid = UUID.fromString(id);}
+        catch (Exception exception) {throw new EmployeeMissingArgException("UUID id", "Nonconvertible String " + id);}
+
         for (Employee emp: employeeList) {
             if (emp.id.equals(uid)) {
                 return emp;
@@ -39,13 +43,13 @@ public class LocalEmployeeService implements EmployeeServiceIf {
         throw new EmployeeNotFoundException(uid);
     }
 
-    @GetMapping("/employee/list")
+    @GetMapping("/employees")
     @Override
     public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
-    @PatchMapping("/employee/{id}")
+    @PatchMapping("/employees/{id}")
     @Override
     public Employee editEmployee(@PathVariable String id, String name, String surname, String role) {
         var emp = getEmployeeFromId(id);
@@ -57,7 +61,7 @@ public class LocalEmployeeService implements EmployeeServiceIf {
         return emp;
     }
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/employees/{id}")
     @Override
     public void removeEmployee(@PathVariable String id) {
         var emp = getEmployeeFromId(id);
