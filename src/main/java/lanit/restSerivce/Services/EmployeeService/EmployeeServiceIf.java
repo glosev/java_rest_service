@@ -13,4 +13,5 @@ public interface EmployeeServiceIf {
     List<Employee> getEmployeeList();
     Employee editEmployee(String id, String name, String surname, String role);
     void removeEmployee(String id);
+    void removeEmployees();
 }

@@ -94,4 +94,10 @@ public class LocalEmployeeService implements EmployeeServiceIf {
         var emp = getEmployeeFromSpecifiedIdentifier(id);
         employeeList.remove(emp);
     }
+
+    @DeleteMapping("/employees")
+    @Override
+    public void removeEmployees() {
+        employeeList.clear();
+    }
 }
