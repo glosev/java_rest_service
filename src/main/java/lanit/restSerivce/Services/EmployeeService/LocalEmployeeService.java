@@ -13,7 +13,7 @@ import java.util.UUID;
 public class LocalEmployeeService implements EmployeeServiceIf {
     private int instanceCount = 0;
 
-    private List<Employee> employeeList = new ArrayList<>();
+    private final List<Employee> employeeList = new ArrayList<>();
 
     // Поиск записи по целочисленному ID
     @Override
