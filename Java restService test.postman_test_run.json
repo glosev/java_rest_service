@@ -1,0 +1,326 @@
+{
+	"id": "a88307c8-07b4-4ab2-a805-d7f81b5e3bef",
+	"name": "Java restService test",
+	"timestamp": "2023-04-10T15:39:32.357Z",
+	"collection_id": "0-1090566d-5f14-4fb2-934b-5dbfc2cce7ed",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "5622adb2-ff67-4acb-812f-2119d89e75c2",
+			"name": "GET Employee list",
+			"url": "http://localhost:8080/employees",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				121
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2b825535-059e-4d99-b452-a48f34075fd2",
+			"name": "GET Employee from ID or UUID",
+			"url": "http://localhost:8080/employees/0",
+			"time": 18,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b81154d9-2e8e-41e6-8c06-d8b3a9fd3d54",
+			"name": "POST Employee",
+			"url": "http://localhost:8080/employees?name=Evan&surname=McGregor&role=CEO",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				29
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a29655e5-5a25-4c95-85e3-9dd72e32fd74",
+			"name": "POST another Employee",
+			"url": "http://localhost:8080/employees?name=Ivan&surname=Grigoriev&role=Cleaner",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3fdcb70a-0168-461f-be1f-06138ae52aae",
+			"name": "POST third Employee",
+			"url": "http://localhost:8080/employees?name=Gregor&surname=Evans&role=Chief%20Engineer",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "770115a2-e5f3-4cb4-8b72-3a9c27558c0c",
+			"name": "GET Employee newer list",
+			"url": "http://localhost:8080/employees",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "61f4863f-328f-4a91-bbee-3bb8c5c0852d",
+			"name": "PATCH Employee id 0",
+			"url": "http://localhost:8080/employees/0?role=Not-CEO-Anymore",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "62e5e53c-f4a5-4a7c-8ccb-9b03fab712f5",
+			"name": "PATCH Employee id 1",
+			"url": "http://localhost:8080/employees/1?role=new-CEO",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "81c3377e-9fe2-4ac6-85c0-7905ccd15145",
+			"name": "GET Employee the newest list",
+			"url": "http://localhost:8080/employees",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dca81358-c677-4d94-a9ce-454559523c91",
+			"name": "DELETE Employee id 0",
+			"url": "http://localhost:8080/employees/0",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "23d97b6f-a3e6-473d-8574-fc455df936ec",
+			"name": "GET non-existing Employee",
+			"url": "http://localhost:8080/employees/0",
+			"time": 3,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "47870a9c-02e5-43b8-a6a5-27ebd88fd774",
+			"name": "GET Employee list last time",
+			"url": "http://localhost:8080/employees",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "08a9ca3f-abbc-442d-a934-5c947ce42bac",
+			"name": "DELETE Employee list",
+			"url": "http://localhost:8080/employees",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "deba36c5-fc14-4d1d-8e47-0b2bd4dc5196",
+			"name": "GET Employee list very last time",
+			"url": "http://localhost:8080/employees",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 211,
+	"collection": {
+		"requests": [
+			{
+				"id": "5622adb2-ff67-4acb-812f-2119d89e75c2",
+				"method": "GET"
+			},
+			{
+				"id": "2b825535-059e-4d99-b452-a48f34075fd2",
+				"method": "GET"
+			},
+			{
+				"id": "b81154d9-2e8e-41e6-8c06-d8b3a9fd3d54",
+				"method": "POST"
+			},
+			{
+				"id": "a29655e5-5a25-4c95-85e3-9dd72e32fd74",
+				"method": "POST"
+			},
+			{
+				"id": "3fdcb70a-0168-461f-be1f-06138ae52aae",
+				"method": "POST"
+			},
+			{
+				"id": "770115a2-e5f3-4cb4-8b72-3a9c27558c0c",
+				"method": "GET"
+			},
+			{
+				"id": "61f4863f-328f-4a91-bbee-3bb8c5c0852d",
+				"method": "PATCH"
+			},
+			{
+				"id": "62e5e53c-f4a5-4a7c-8ccb-9b03fab712f5",
+				"method": "PATCH"
+			},
+			{
+				"id": "81c3377e-9fe2-4ac6-85c0-7905ccd15145",
+				"method": "GET"
+			},
+			{
+				"id": "dca81358-c677-4d94-a9ce-454559523c91",
+				"method": "DELETE"
+			},
+			{
+				"id": "23d97b6f-a3e6-473d-8574-fc455df936ec",
+				"method": "GET"
+			},
+			{
+				"id": "47870a9c-02e5-43b8-a6a5-27ebd88fd774",
+				"method": "GET"
+			},
+			{
+				"id": "08a9ca3f-abbc-442d-a934-5c947ce42bac",
+				"method": "DELETE"
+			},
+			{
+				"id": "deba36c5-fc14-4d1d-8e47-0b2bd4dc5196",
+				"method": "GET"
+			}
+		]
+	}
+}
