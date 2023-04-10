@@ -11,8 +11,34 @@ import java.util.UUID;
 
 @RestController
 public class LocalEmployeeService implements EmployeeServiceIf {
+    private int instanceCount = 0;
 
     private List<Employee> employeeList = new ArrayList<>();
+
+    // Поиск записи по целочисленному ID
+    @Override
+    public Employee getEmployeeFromID(int id) {
+        for (Employee emp: employeeList) {
+            if (emp.id == id) {
+                return emp;
+            }
+        }
+
+        throw new EmployeeNotFoundException(Integer.toString(id));
+    }
+
+    // Поиск записи по UUID
+    @Override
+    public Employee getEmployeeFromUUID(UUID uuid) {
+        for (Employee emp: employeeList) {
+            if (emp.uuid.equals(uuid)) {
+                return emp;
+            }
+        }
+
+        throw new EmployeeNotFoundException(uuid.toString());
+    }
+
     @PostMapping("/employees")
     @Override
     public Employee addEmployee(String name, String surname, String role) {
@@ -20,27 +46,28 @@ public class LocalEmployeeService implements EmployeeServiceIf {
         if (surname == null)    throw new EmployeeMissingArgException("String surname", "null");
         if (role    == null)    throw new EmployeeMissingArgException("String role",    "null");
 
-        var emp = new Employee(name, surname);
+        var emp = new Employee(name, surname, instanceCount++);
         emp.setRole(role);
         employeeList.add(emp);
         return emp;
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/employees/{identifier}")
     @Override
-    public Employee getEmployeeFromId(@PathVariable String id) {
+    public Employee getEmployeeFromSpecifiedIdentifier(@PathVariable String identifier) {
         UUID uid;
+        int id;
 
-        try {uid = UUID.fromString(id);}
-        catch (Exception exception) {throw new EmployeeMissingArgException("UUID id", "Nonconvertible String " + id);}
-
-        for (Employee emp: employeeList) {
-            if (emp.id.equals(uid)) {
-                return emp;
+        try {id = Integer.parseInt(identifier);}
+        catch (Exception firstErr) {
+            try {uid = UUID.fromString(identifier);}
+            catch (Exception secondErr) {
+                throw new EmployeeMissingArgException("String identifier", "Nonconvertible String " + identifier);
             }
+            return this.getEmployeeFromUUID(uid);
         }
 
-        throw new EmployeeNotFoundException(uid);
+        return this.getEmployeeFromID(id);
     }
 
     @GetMapping("/employees")
@@ -52,7 +79,7 @@ public class LocalEmployeeService implements EmployeeServiceIf {
     @PatchMapping("/employees/{id}")
     @Override
     public Employee editEmployee(@PathVariable String id, String name, String surname, String role) {
-        var emp = getEmployeeFromId(id);
+        var emp = getEmployeeFromSpecifiedIdentifier(id);
 
         if (name    != null)    emp.setName(name);
         if (surname != null)    emp.setSurname(surname);
@@ -64,7 +91,7 @@ public class LocalEmployeeService implements EmployeeServiceIf {
     @DeleteMapping("/employees/{id}")
     @Override
     public void removeEmployee(@PathVariable String id) {
-        var emp = getEmployeeFromId(id);
+        var emp = getEmployeeFromSpecifiedIdentifier(id);
         employeeList.remove(emp);
     }
 }

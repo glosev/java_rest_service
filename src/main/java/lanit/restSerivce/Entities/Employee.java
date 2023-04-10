@@ -4,10 +4,11 @@ import java.util.UUID;
 
 public class Employee implements Account {
 
-    public final UUID id;
-    private String name = "";
-    private String role = "";
-    private String surname = "";
+    public final int id;
+    public final UUID uuid;
+    private String name;
+    private String role;
+    private String surname;
     private String fullName;
 
     @Override
@@ -47,8 +48,9 @@ public class Employee implements Account {
         return this.fullName;
     }
 
-    public Employee(String name, String surname) {
-        this.id = UUID.randomUUID();
+    public Employee(String name, String surname, int id) {
+        this.id = id;
+        this.uuid = UUID.randomUUID();
         this.name = name;
         this.surname = surname;
         this.fullName = name + " " + surname;
