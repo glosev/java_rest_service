@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public interface EmployeeServiceIf {
     Employee addEmployee(String name, String surname, String role);
-    public Employee getEmployeeFromUUID(UUID uuid);
-    public Employee getEmployeeFromID(int id);
+    Employee getEmployeeFromUUID(UUID uuid);
+    Employee getEmployeeFromID(int id);
     Employee getEmployeeFromSpecifiedIdentifier(String id);
     List<Employee> getEmployeeList();
     Employee editEmployee(String id, String name, String surname, String role);
